@@ -12,5 +12,4 @@ jobs:
         run: echo "Running Tests"
       - name: Step 3 - Deploy
         run: echo "Deploying Applictaion"
-      - name: Step 4 - Fail intentionally
-        run: exit 1  
+       
