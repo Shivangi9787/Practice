@@ -1,15 +1,12 @@
-name: "Advanced pipeline"
-on:
-  push:
-    branches: ["main"]
+name: basicpipeline
+on: 
+ push:
+   branches: ["main"]
 jobs:
-  build: 
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1 - Build
-        run: echo "Building Applictaion"
-      - name: Step 2 - test
-        run: echo "Running Tests"
-      - name: Step 3 - Deploy
-        run: echo "Deploying Applictaion"
-       
+        - name: step1
+          run: echo "hello"
+        - name: step2
+          run: echo "display pipeline"
