@@ -17,4 +17,12 @@ jobs:
         - name: conditional step
           if: success()
           run: echo "Pipeline is successful"
+        - name: Build the code
+          run: echo "Building the code"
+        - name: test the code
+          run: echo "Testing"
+        - name: Deploy the code
+          run: echo "Deploying the code"
+        
+        
         
