@@ -1,40 +1,27 @@
-name: basicpipeline
+name: CICD
 on: 
  push:
    branches: ["main"]
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-        - name: checkout code
-          uses: actions/checkout@v3
-        - name: show files
-          run: ls
-        - name: step1
-          run: echo "hello"
-        - name: step2
-          run: echo " Display pipeline"
-        - name: conditional step
-          if: success()
-          run: echo "Pipeline is successful"
-        - name: Build the code
-          run: echo "Building the code"
-        - name: test the code
-          run: echo "Testing"
-        - name: Deploy the code
-          run: echo "Deploying the code"
-        - name: Create build file
-          run: echo "This is my app build" > build.txt
-        - name: Create deploy build
-          run: mkdir deploy
-        - name: Move file to deploy folder
-          run: mv build.txt deploy/
-        - name: check deployed files
-          run: ls deploy
-        - name: upload artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: my-build
-            path: deploy/build.txt
-        
-        
+   build:
+     runs-on: ubuntu-latest
+     steps:
+         - name: Create build file
+           run: echo "This is my app build" > build.txt
+         - name: Upload artifact
+           uses: actions/upload-artifact@v4
+           with:
+             name: my-artifact
+             path: build.txt
+   deploy:
+       needs: build
+       runs-on: ubuntu-latest
+       steps:
+         - name: download artifact
+           uses: actions/download-artifact@v4
+           with:
+             name: my-artifact
+         - name: Show file
+           run: cat build.txt
+      
+    
