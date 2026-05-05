@@ -31,5 +31,10 @@ jobs:
           run: mv build.txt deploy/
         - name: check deployed files
           run: ls deploy
+        - name: upload artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: my-build
+            path: build.txt
         
         
