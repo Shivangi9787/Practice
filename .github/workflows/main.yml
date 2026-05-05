@@ -29,5 +29,7 @@ jobs:
           run: mkdir deploy
         - name: Move file to deploy folder
           run: mv build.txt deploy/
+        - name: check deployed files
+          run: ls deploy
         
         
