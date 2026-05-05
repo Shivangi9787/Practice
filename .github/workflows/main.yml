@@ -32,7 +32,7 @@ jobs:
         - name: check deployed files
           run: ls deploy
         - name: upload artifact
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: my-build
             path: build.txt
