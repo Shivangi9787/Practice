@@ -23,6 +23,11 @@ jobs:
           run: echo "Testing"
         - name: Deploy the code
           run: echo "Deploying the code"
-        
+        - name: Create build file
+          run: echo "This is my app build" > build.txt
+        - name: Create deploy build
+          run: mkdir deploy
+        - name: Move file to deploy folder
+          run: mv build.txt deploy/
         
         
